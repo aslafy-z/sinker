@@ -38,7 +38,10 @@ func Get(path string) (Manifest, error) {
 	// should be the target defined in the manifest.
 	for s := range manifest.Sources {
 		if manifest.Sources[s].Target.Host == "" {
-			manifest.Sources[s].Target = manifest.Target
+			manifest.Sources[s].Target.Host = manifest.Target.Host
+		}
+		if manifest.Sources[s].Target.Repository == "" {
+			manifest.Sources[s].Target.Repository = manifest.Target.Repository
 		}
 	}
 
